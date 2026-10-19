@@ -1,0 +1,61 @@
+{
+  "name": "auth-header",
+  "author": "ChicAndUnique",
+  "title": "Authorization 请求头",
+  "description": "下载时自动为匹配的站点补上 Authorization（或自定义）请求头",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ChicAndUnique/gopeed-extension-auth-header",
+  "repository": {
+    "url": "https://github.com/ChicAndUnique/gopeed-extension-auth-header"
+  },
+  "scripts": [
+    {
+      "event": "onResolve",
+      "match": {
+        "urls": [
+          "*://*/*"
+        ]
+      },
+      "entry": "index.js"
+    },
+    {
+      "event": "onStart",
+      "match": {
+        "urls": [
+          "*://*/*"
+        ]
+      },
+      "entry": "index.js"
+    }
+  ],
+  "settings": [
+    {
+      "name": "authorization",
+      "title": "请求头的值",
+      "description": "完整的头部值，例如 Bearer eyJhbGciOi... 或 Basic dXNlcjpwYXNz",
+      "type": "string",
+      "value": ""
+    },
+    {
+      "name": "hosts",
+      "title": "生效域名",
+      "description": "逗号分隔，支持 *.example.com 通配；留空表示对所有 http(s) 下载生效",
+      "type": "string",
+      "value": ""
+    },
+    {
+      "name": "headerName",
+      "title": "请求头名称",
+      "description": "默认 Authorization，也可以改成 X-Auth-Token 之类",
+      "type": "string",
+      "value": "Authorization"
+    },
+    {
+      "name": "overwrite",
+      "title": "覆盖已有值",
+      "description": "开启后，即使任务本身已带有该请求头也会被替换",
+      "type": "boolean",
+      "value": false
+    }
+  ]
+}
